@@ -1,5 +1,8 @@
 # RESTful API Node Server Boilerplate
 
+## You should know
+this project forked from https://github.com/hagopj13/node-express-boilerplate.git, i just update package version for pnpm use.
+
 [![Build Status](https://travis-ci.org/hagopj13/node-express-boilerplate.svg?branch=master)](https://travis-ci.org/hagopj13/node-express-boilerplate)
 [![Coverage Status](https://coveralls.io/repos/github/hagopj13/node-express-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/hagopj13/node-express-boilerplate?branch=master)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
@@ -29,7 +32,7 @@ If you would still prefer to do the installation manually, follow these steps:
 Clone the repo:
 
 ```bash
-git clone --depth 1 https://github.com/hagopj13/node-express-boilerplate.git
+git clone --depth 1 https://github.com/CracKerMe/node-express-boilerplate.git
 cd node-express-boilerplate
 npx rimraf ./.git
 ```
@@ -51,6 +54,7 @@ cp .env.example .env
 ## Table of Contents
 
 - [RESTful API Node Server Boilerplate](#restful-api-node-server-boilerplate)
+  - [You should know](#you-should-know)
   - [Quick Start](#quick-start)
   - [Manual Installation](#manual-installation)
   - [Table of Contents](#table-of-contents)
