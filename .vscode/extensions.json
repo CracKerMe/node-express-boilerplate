@@ -3,6 +3,7 @@
     "mikestead.dotenv",
     "dbaeumer.vscode-eslint",
     "christian-kohler.npm-intellisense",
-    "christian-kohler.path-intellisense"
+    "christian-kohler.path-intellisense",
+    "humao.rest-client"
   ]
 }

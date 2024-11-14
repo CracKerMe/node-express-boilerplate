@@ -24,6 +24,7 @@ const envVarsSchema = Joi.object()
     SMTP_USERNAME: Joi.string().description('username for email server'),
     SMTP_PASSWORD: Joi.string().description('password for email server'),
     EMAIL_FROM: Joi.string().description('the from field in the emails sent by the app'),
+    EMAIL_TEMPLATE_URL: Joi.string().description('the URL of the project for email templates'),
   })
   .unknown();
 
@@ -37,7 +38,7 @@ export default {
   env: envVars.NODE_ENV,
   port: envVars.PORT,
   mongoose: {
-    url: envVars.MONGODB_URL + (envVars.NODE_ENV === 'test' ? '-test' : '')
+    url: envVars.MONGODB_URL + (envVars.NODE_ENV === 'test' ? '-test' : ''),
   },
   jwt: {
     secret: envVars.JWT_SECRET,
@@ -57,4 +58,5 @@ export default {
     },
     from: envVars.EMAIL_FROM,
   },
+  projectURL: envVars.EMAIL_TEMPLATE_URL,
 };

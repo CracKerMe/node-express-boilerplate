@@ -1,0 +1,62 @@
+
+### Auth login 登录
+POST http://localhost:3333/v1/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "fake@example.com",
+  "password": "password1"
+}
+
+### Auth register 注册
+POST http://localhost:3333/v1/auth/register HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "fake name",
+  "email": "fake@example.com",
+  "password": "password1"
+}
+
+### Auth logout 登出
+POST http://localhost:3333/v1/auth/logout HTTP/1.1
+Content-Type: application/json
+
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NzMyZThlOTI2MTVlNWJhOGNhYmE1MzgiLCJpYXQiOjE3MzE1NTEwNTAsImV4cCI6MTczNDE0MzA1MCwidHlwZSI6InJlZnJlc2gifQ.CCFzmlBhK-V2LQ8WpCQv-Fe4ZGIpXDzQ18T5oEuzrqc"
+}
+
+### Auth refresh token 刷新 token, 用于延长 token 有效期, 一般用于长时间不操作的情况, 登录后的第一次请求会返回新的 token
+POST http://localhost:3333/v1/auth/refresh-tokens HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NzMyZThlOTI2MTVlNWJhOGNhYmE1MzgiLCJpYXQiOjE3MzE1NTE2NjIsImV4cCI6MTczMTU1MzQ2MiwidHlwZSI6ImFjY2VzcyJ9.uP-PYaOOrj7MUcUZFt68S9IkDoKFhAgS4eOqUFSmovY
+
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NzMyZThlOTI2MTVlNWJhOGNhYmE1MzgiLCJpYXQiOjE3MzE1NTE2NjIsImV4cCI6MTczNDE0MzY2MiwidHlwZSI6InJlZnJlc2gifQ.cklFfKfd-CcpN7NkPXzUgizrhq-4I3-ZuxJi_gAYfbc"
+}
+
+### Auth forgot password 忘记密码
+POST http://localhost:3333/v1/auth/forgot-password HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "fake@example.com"
+}
+
+### Auth reset password 重置密码
+POST http://localhost:3333/v1/auth/reset-password?token=123 HTTP/1.1
+Content-Type: application/json
+
+{
+  "password": "password1"
+}
+
+### Auth send email verification 发送邮箱验证
+POST http://localhost:3333/v1/auth/send-verification-email HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NzMyZThlOTI2MTVlNWJhOGNhYmE1MzgiLCJpYXQiOjE3MzE1NTE2NjIsImV4cCI6MTczMTU1MzQ2MiwidHlwZSI6ImFjY2VzcyJ9.uP-PYaOOrj7MUcUZFt68S9IkDoKFhAgS4eOqUFSmovY
+
+
+### Auth verify email 验证邮箱
+POST http://localhost:3333/v1/auth/verify-email?token=123 HTTP/1.1
+

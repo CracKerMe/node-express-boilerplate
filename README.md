@@ -172,6 +172,9 @@ SMTP_PORT=587
 SMTP_USERNAME=email-server-username
 SMTP_PASSWORD=email-server-password
 EMAIL_FROM=support@yourapp.com
+
+EMAIL_TEMPLATE_URL=http://link-to-your-app.com
+
 ```
 
 ## Project Structure

@@ -1,0 +1,39 @@
+# 全都需要已登录的情况下才能访问
+
+### Create a new user account 新建用户
+POST http://localhost:3333/v1/users HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <token>
+
+{
+  "name": "fake name",
+  "email": "fake@example.com",
+  "password": "password1",
+  "role": "user"
+}
+
+### Get all users 获取所有用户
+GET http://localhost:3333/v1/users?name=1&role=user&sortBy=&limit=20&page=1 HTTP
+Content-Type: application/json
+Authorization: Bearer <token>
+
+### Get a user by id 根据id获取用户
+GET http://localhost:3333/v1/users/1 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <token>
+
+### Update a user by id 根据id更新用户
+PATCH http://localhost:3333/v1/users/1 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <token>
+
+{
+  "name": "fake name",
+  "email": "fake@example.com",
+  "password": "password1"
+}
+
+### Delete a user by id 根据id删除用户
+DELETE http://localhost:3333/v1/users/1 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <token>

@@ -14,12 +14,11 @@ import routes from './routes/v1/index.js';
 import { errorConverter, errorHandler } from './middlewares/error.js';
 import ApiError from './utils/ApiError.js';
 
-
 const app = express();
 
 if (config.env !== 'test') {
-    app.use(morgan.successHandler);
-    app.use(morgan.errorHandler);
+  app.use(morgan.successHandler);
+  app.use(morgan.errorHandler);
 }
 
 // 设置安全 HTTP 头
@@ -48,7 +47,7 @@ passport.use('jwt', jwtStrategy);
 
 // 限制对身份验证端点的重复失败请求
 if (config.env === 'production') {
-    app.use('/v1/auth', authLimiter);
+  app.use('/v1/auth', authLimiter);
 }
 
 // v1 api 路由
@@ -56,7 +55,7 @@ app.use('/v1', routes);
 
 // 将 404 错误发送回任何未知的 api 请求
 app.use((req, res, next) => {
-    next(new ApiError(httpStatus.NOT_FOUND, 'Not found'));
+  next(new ApiError(httpStatus.NOT_FOUND, 'Not found'));
 });
 
 // 将错误转换为 ApiError（如果需要）
