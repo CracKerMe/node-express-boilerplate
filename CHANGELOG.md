@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.0.2]
+### Features
+  - Remove Testing Support
+
 ## [0.0.1]
 ### Features
   - Add support for type: module
