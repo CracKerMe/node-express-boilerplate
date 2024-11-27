@@ -15,7 +15,7 @@ By running a single command, you will get a production-ready Node.js app install
 To create a project, simply run:
 
 ```bash
-npx create-nodejs-express-app <project-name>
+npx create-esm-express-app <project-name>
 ```
 
 Or

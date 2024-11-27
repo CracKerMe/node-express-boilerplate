@@ -1,26 +1,25 @@
 #!/usr/bin/env node
-const util = require('util');
-const path = require('path');
-const fs = require('fs');
-const { execSync } = require('child_process');
+import { promisify } from 'util';
+import { exec } from 'child_process';
+import path from 'path';
+import fs from 'fs';
+import { execSync } from 'child_process';
 
 // Utility functions
-const exec = util.promisify(require('child_process').exec);
+const execPromisified = promisify(exec);
 async function runCmd(command) {
   try {
-    const { stdout, stderr } = await exec(command);
+    const { stdout, stderr } = await execPromisified(command);
     console.log(stdout);
     console.log(stderr);
-  } catch {
-    (error) => {
-      console.log(error);
-    };
+  } catch (error) {
+    console.log(error);
   }
 }
 
-async function hasYarn() {
+async function hasPnpm() {
   try {
-    await execSync('yarnpkg --version', { stdio: 'ignore' });
+    await execSync('pnpm --version', { stdio: 'ignore' });
     return true;
   } catch {
     return false;
@@ -31,7 +30,7 @@ async function hasYarn() {
 if (process.argv.length < 3) {
   console.log('Please specify the target project directory.');
   console.log('For example:');
-  console.log('    npx create-nodejs-app my-app');
+  console.log('    npx create-esm-express-app my-app');
   console.log('    OR');
   console.log('    npm init nodejs-app my-app');
   process.exit(1);
@@ -67,17 +66,17 @@ async function setup() {
     process.chdir(appPath);
 
     // Install dependencies
-    const useYarn = await hasYarn();
+    const usePnpm = await hasPnpm();
     console.log('Installing dependencies...');
-    if (useYarn) {
-      await runCmd('yarn install');
+    if (usePnpm) {
+      await runCmd('pnpm install');
     } else {
       await runCmd('npm install');
     }
     console.log('Dependencies installed successfully.');
     console.log();
 
-    // Copy envornment variables
+    // Copy environment variables
     fs.copyFileSync(path.join(appPath, '.env.example'), path.join(appPath, '.env'));
     console.log('Environment files copied.');
 
@@ -90,8 +89,8 @@ async function setup() {
     fs.unlinkSync(path.join(appPath, 'CONTRIBUTING.md'));
     fs.unlinkSync(path.join(appPath, 'bin', 'createNodejsApp.js'));
     fs.rmdirSync(path.join(appPath, 'bin'));
-    if (!useYarn) {
-      fs.unlinkSync(path.join(appPath, 'yarn.lock'));
+    if (!usePnpm) {
+      fs.unlinkSync(path.join(appPath, 'pnpm-lock.yaml'));
     }
 
     console.log('Installation is now complete!');
@@ -99,7 +98,7 @@ async function setup() {
 
     console.log('We suggest that you start by typing:');
     console.log(`    cd ${folderName}`);
-    console.log(useYarn ? '    yarn dev' : '    npm run dev');
+    console.log(usePnpm ? '    pnpm dev' : '    npm run dev');
     console.log();
     console.log('Enjoy your production-ready Node.js app, which already supports a large number of ready-made features!');
     console.log('Check README.md for more info.');
