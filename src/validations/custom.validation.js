@@ -15,7 +15,4 @@ const password = (value, helpers) => {
   return value;
 };
 
-export {
-  objectId,
-  password,
-};
+export { objectId, password };

@@ -1,6 +1,6 @@
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
 import config from './config.js';
-import { tokenTypes } from './tokens.js';
+import tokenTypes from './tokens.js';
 import { User } from '../models/index.js';
 
 const jwtOptions = {
@@ -25,6 +25,4 @@ const jwtVerify = async (payload, done) => {
 
 const jwtStrategy = new JwtStrategy(jwtOptions, jwtVerify);
 
-export {
-  jwtStrategy,
-};
+export default jwtStrategy;

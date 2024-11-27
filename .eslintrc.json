@@ -1,12 +1,14 @@
 {
   "env": {
     "node": true,
-    "jest": true
+    "jest": true,
+    "es2021": true
   },
-  "extends": ["airbnb-base", "plugin:jest/recommended", "plugin:prettier/recommended"],
-  "plugins": ["jest", "security", "prettier"],
+  "extends": ["airbnb-base", "plugin:prettier/recommended"],
+  "plugins": ["prettier"],
   "parserOptions": {
-    "ecmaVersion": 2018
+    "ecmaVersion": 2018,
+    "sourceType": "module"
   },
   "rules": {
     "no-console": "error",
@@ -14,6 +16,17 @@
     "no-underscore-dangle": "off",
     "consistent-return": "off",
     "jest/expect-expect": "off",
-    "security/detect-object-injection": "off"
-  }
+    "security/detect-object-injection": "off",
+    "import/extensions": [
+      "off",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ]
+  },
+  "ignorePatterns": ["node_modules/", "tests/"]
 }

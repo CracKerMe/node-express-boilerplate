@@ -3,7 +3,7 @@ import tokenService from './token.service.js';
 import userService from './user.service.js';
 import Token from '../models/token.model.js';
 import ApiError from '../utils/ApiError.js';
-import { tokenTypes } from '../config/tokens.js';
+import tokenTypes from '../config/tokens.js';
 
 /**
  * Login with username and password
