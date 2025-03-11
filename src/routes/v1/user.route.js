@@ -6,6 +6,8 @@ import userController from '../../controllers/user.controller.js';
 
 const router = express.Router();
 
+router.get('/send-email', userController.sendEmailTest);
+
 router
   .route('/')
   .post(auth('manageUsers'), validate(userValidation.createUser), userController.createUser)

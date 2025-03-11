@@ -2,7 +2,7 @@ import httpStatus from 'http-status';
 import pick from '../utils/pick.js';
 import ApiError from '../utils/ApiError.js';
 import catchAsync from '../utils/catchAsync.js';
-import { userService } from '../services/index.js';
+import { userService, emailService } from '../services/index.js';
 
 const createUser = catchAsync(async (req, res) => {
   const user = await userService.createUser(req.body);
@@ -34,10 +34,16 @@ const deleteUser = catchAsync(async (req, res) => {
   res.status(httpStatus.NO_CONTENT).send();
 });
 
+const sendEmailTest = catchAsync(async (req, res) => {
+  await emailService.sendEmail(req.query.to, req.query.subject, req.query.text);
+  res.status(httpStatus.NO_CONTENT).send();
+});
+
 export default {
   createUser,
   getUsers,
   getUser,
   updateUser,
   deleteUser,
+  sendEmailTest,
 };
